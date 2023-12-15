@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-12 col-md-8 mx-auto">
+        <div class="card shadow">
+            <h4 class="card-header text-center text-light {{#if edit}}bg-warning {{else}}bg-primary{{/if}}"> 
+            {{#if edit}}Edit{{else}}ADD{{/if}} TASK
+            </h4>
+            <div class="card-body">
+                <form action="{{#if edit}}/edit/{{else}}/add{{/if}}" method="POST">
+                <div class="mb-3">
+                    <label for="priority" class="form-label">Priority</label>
+                    <select class="form-select" name="priority" id="priority">
+                        <option value="low" {{#if task.low}} selected{{/if}}>Low</option>
+                        <option value="medium" {{#if task.medium}} selected{{/if}}>Medium</option>
+                        <option value="heigh" {{#if task.heigh}} selected{{/if}}>Heigh</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="title" class="form-label">Task Title</label>
+                    <input type="text" class="form-control" name="title" value="{{task.title}}">
+                </div>
+
+                {{#if edit}}<input type="hidden" name="id" value="{{task._id}}">{{/if}}
+
+                <div class="text-center">
+                    <button class="btn {{#if edit}}btn-warning{{else}}btn-primary{{/if}}" type="submit"> 
+                    {{#if edit}}UPDATE{{else}}ADD{{/if}}
+                    </button>
+                </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
