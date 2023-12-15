@@ -10,7 +10,7 @@ require('express-async-errors');
 // Configuration
 const PORT = process.env.PORT || 8080;
 const MODE = process.env.MODE || 'production';
-const HOST = process.env.HOST || '127.0.0.1';
+const HOST = process.env.HOST || 'http://127.0.0.1';
 
 // Handlebars Template configurations 
 const {engine}= require('express-handlebars') 
@@ -49,7 +49,7 @@ app.use((error, req, res, next)=>{
 })
 
 // Run server 
-const server = app.listen(PORT, console.log(`Server running on ${MODE} mode at http://${HOST}:${PORT}`.green.underline))
+const server = app.listen(PORT, console.log(`Server running on ${MODE} mode at ${HOST}:${PORT}`.green.underline))
 
 process.on('uncaughtException', ()=>{
     server.close(console.log(`Closing server`.red))
